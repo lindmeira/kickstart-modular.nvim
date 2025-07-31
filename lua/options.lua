@@ -1,74 +1,124 @@
 -- [[ Setting options ]]
--- See `:help vim.o`
+-- See `:help vim.opt`
 -- NOTE: You can change these options as you wish!
 --  For more options, you can see `:help option-list`
 
 -- Make line numbers default
-vim.o.number = true
+vim.opt.number = true
 -- You can also add relative line numbers, to help with jumping.
 --  Experiment for yourself to see if you like it!
--- vim.o.relativenumber = true
+vim.opt.relativenumber = true
 
 -- Enable mouse mode, can be useful for resizing splits for example!
-vim.o.mouse = 'a'
+vim.opt.mouse = ''
 
 -- Don't show the mode, since it's already in the status line
-vim.o.showmode = false
+vim.opt.showmode = false
 
 -- Sync clipboard between OS and Neovim.
 --  Schedule the setting after `UiEnter` because it can increase startup-time.
 --  Remove this option if you want your OS clipboard to remain independent.
 --  See `:help 'clipboard'`
 vim.schedule(function()
-  vim.o.clipboard = 'unnamedplus'
+  vim.opt.clipboard = 'unnamedplus'
 end)
 
 -- Enable break indent
-vim.o.breakindent = true
+vim.opt.breakindent = true
 
 -- Save undo history
-vim.o.undofile = true
+vim.opt.undofile = true
 
 -- Case-insensitive searching UNLESS \C or one or more capital letters in the search term
-vim.o.ignorecase = true
-vim.o.smartcase = true
+vim.opt.ignorecase = true
+vim.opt.smartcase = true
 
 -- Keep signcolumn on by default
-vim.o.signcolumn = 'yes'
+vim.opt.signcolumn = 'yes'
 
 -- Decrease update time
-vim.o.updatetime = 250
+vim.opt.updatetime = 250
 
 -- Decrease mapped sequence wait time
-vim.o.timeoutlen = 300
+vim.opt.timeoutlen = 300
 
 -- Configure how new splits should be opened
-vim.o.splitright = true
-vim.o.splitbelow = true
+vim.opt.splitright = true
+vim.opt.splitbelow = true
 
 -- Sets how neovim will display certain whitespace characters in the editor.
 --  See `:help 'list'`
 --  and `:help 'listchars'`
---
---  Notice listchars is set using `vim.opt` instead of `vim.o`.
---  It is very similar to `vim.o` but offers an interface for conveniently interacting with tables.
---   See `:help lua-options`
---   and `:help lua-options-guide`
-vim.o.list = true
-vim.opt.listchars = { tab = '» ', trail = '·', nbsp = '␣' }
+vim.opt.list = true
+vim.opt.listchars = { tab = '»·', trail = '·', nbsp = '␣' }
 
 -- Preview substitutions live, as you type!
-vim.o.inccommand = 'split'
+vim.opt.inccommand = 'split'
 
 -- Show which line your cursor is on
-vim.o.cursorline = true
+vim.opt.cursorline = false
 
 -- Minimal number of screen lines to keep above and below the cursor.
-vim.o.scrolloff = 10
+vim.opt.scrolloff = 10
 
 -- if performing an operation that would fail due to unsaved changes in the buffer (like `:q`),
 -- instead raise a dialog asking if you wish to save the current file(s)
 -- See `:help 'confirm'`
-vim.o.confirm = true
+vim.opt.confirm = true
+
+-- Personal settings from my lifetime .vimrc file
+vim.opt.foldmethod = 'indent'
+vim.opt.foldlevel = 99
+
+vim.opt.guicursor = 'i:ver25-blinkwait100-blinkon50-blinkoff50'
+vim.opt.expandtab = true
+vim.opt.softtabstop = 2
+vim.opt.shiftwidth = 2
+vim.opt.tabstop = 2
+
+-- Set the colorscheme
+-- vim.cmd.colorscheme 'vim'
+-- vim.opt.termguicolors = false
+
+-- Setup for TrueColor
+-- vim.api.nvim_set_hl(0, "Visual", { bg = "black", fg = "none" })
+-- vim.api.nvim_set_hl(0, "LineNr", { fg = "grey" })
+-- vim.api.nvim_set_hl(0, "Comment", { fg = "grey" })
+-- vim.api.nvim_set_hl(0, "SpecialKey", { fg = "grey" })
+-- vim.api.nvim_set_hl(0, "Whitespace", { fg = "grey" })
+-- vim.api.nvim_set_hl(0, "SignColumn", { bg = "none" })
+-- vim.api.nvim_set_hl(0, "EndOfBuffer", { fg = "grey" })
+
+-- Setup for 16 Colors
+-- vim.api.nvim_set_hl(0, 'Visual', { ctermbg = 'black', ctermfg = 'none' })
+-- vim.api.nvim_set_hl(0, 'LineNr', { ctermfg = 'darkgrey' })
+-- vim.api.nvim_set_hl(0, 'Comment', { ctermfg = 'darkgrey' })
+-- vim.api.nvim_set_hl(0, "SpecialKey", { ctermfg = "darkgrey" })
+-- vim.api.nvim_set_hl(0, 'Whitespace', { ctermfg = 'darkgrey' })
+-- vim.api.nvim_set_hl(0, 'SignColumn', { ctermbg = 'none' })
+
+-- [[ Basic Autocommands ]]
+--  See `:help lua-guide-autocommands`
+
+-- Highlight when yanking (copying) text
+--  Try it with `yap` in normal mode
+--  See `:help vim.hl.on_yank()`
+vim.api.nvim_create_autocmd('TextYankPost', {
+  desc = 'Highlight when yanking (copying) text',
+  group = vim.api.nvim_create_augroup('kickstart-highlight-yank', { clear = true }),
+  callback = function()
+    vim.hl.on_yank()
+  end,
+})
+
+vim.api.nvim_create_autocmd('BufReadPost', {
+  callback = function()
+    local mark = vim.api.nvim_buf_get_mark(0, '"')
+    local lcount = vim.api.nvim_buf_line_count(0)
+    if mark[1] > 0 and mark[1] <= lcount then
+      pcall(vim.api.nvim_win_set_cursor, 0, mark)
+    end
+  end,
+})
 
 -- vim: ts=2 sts=2 sw=2 et
