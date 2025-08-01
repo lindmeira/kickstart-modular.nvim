@@ -16,8 +16,8 @@ return {
           enabled = true,
           key_bindings = {
             clear = '<C-c>',
-            next = '<S-Tab>',
-            prev = '<C-]>',
+            next = "<M-[>",
+            prev = '<M-]>',
           },
         },
       }
