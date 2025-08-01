@@ -285,9 +285,8 @@ return {
         'stylua', -- Used to format Lua code
         'checkmake',
         'prettierd',
-        'shellcheck',
         'pretty-php',
-        'clang-format',
+        'shellcheck',
       })
       require('mason-tool-installer').setup { ensure_installed = ensure_installed }
 

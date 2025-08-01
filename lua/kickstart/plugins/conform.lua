@@ -38,7 +38,6 @@ return {
         php = { 'pretty-php' },
         lua = { 'stylua' },
         sh = { 'shfmt' },
-        c = { 'clang-format' },
       },
       formatters = {
         shfmt = {
