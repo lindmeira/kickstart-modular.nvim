@@ -218,18 +218,13 @@ return {
       --  - settings (table): Override the default settings passed when initializing the server.
       --        For example, to see the options for `lua_ls`, you could go to: https://luals.github.io/wiki/settings/
       local servers = {
-        -- clangd = {},
-        -- gopls = {},
-        -- pyright = {},
-        -- rust_analyzer = {},
-        -- ... etc. See `:help lspconfig-all` for a list of all the pre-configured LSPs
+        -- See `:help lspconfig-all` for a list of all the pre-configured LSPs
         --
         -- Some languages (like typescript) have entire language plugins that can be useful:
         --    https://github.com/pmizio/typescript-tools.nvim
         --
         -- But for many setups, the LSP (`ts_ls`) will work just fine
-        -- ts_ls = {},
-        --
+        ts_ls = {},
 
         lua_ls = {
           -- cmd = { ... },
@@ -243,6 +238,30 @@ return {
               -- You can toggle below to ignore Lua_LS's noisy `missing-fields` warnings
               -- diagnostics = { disable = { 'missing-fields' } },
             },
+          },
+        },
+
+        bashls = {
+          -- cmd = {
+          --   'bash-language-server',
+          --   'start'
+          -- },
+          -- filetypes = {
+          --   'bash',
+          --   'sh',
+          -- },
+        },
+
+        clangd = {
+          -- cmd = {
+          --   'clangd',
+          --   '--fallback-style=llvm',
+          -- },
+        },
+
+        phpactor = {
+          filetypes = {
+            'php',
           },
         },
       }
@@ -262,7 +281,13 @@ return {
       -- for you, so that they are available from within Neovim.
       local ensure_installed = vim.tbl_keys(servers or {})
       vim.list_extend(ensure_installed, {
+        'shfmt',
         'stylua', -- Used to format Lua code
+        'checkmake',
+        'prettierd',
+        'shellcheck',
+        'pretty-php',
+        'clang-format',
       })
       require('mason-tool-installer').setup { ensure_installed = ensure_installed }
 
