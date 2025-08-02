@@ -86,6 +86,9 @@ vim.keymap.set('i', '<C-e>', '<C-o>u<C-o>==', { silent = true, remap = true })
 -- Map C-c to yank to system's clipboard (not really needed)
 -- vim.api.nvim_set_keymap('v', '<C-c>', '"_+y', { noremap = true, silent = true })
 
+-- Call NeoGit
+vim.keymap.set('n', '<C-g>', '<Cmd>Neogit<CR>', { silent = true })
+
 -- Remap Q/W to q/w, respectively
 vim.cmd 'command! Q q'
 vim.cmd 'command! W w'
