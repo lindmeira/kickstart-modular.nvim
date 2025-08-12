@@ -121,4 +121,13 @@ vim.api.nvim_create_autocmd('BufReadPost', {
   end,
 })
 
+vim.api.nvim_create_autocmd({ 'BufNewFile', 'BufRead' }, {
+  group = vim.api.nvim_create_augroup('MarkdownSettings', { clear = true }),
+  pattern = { '*.md', '*.markdown' },
+  callback = function()
+    vim.bo.textwidth = 80
+    vim.bo.formatoptions = 'tcqawjp' -- Adjust formatoptions as needed
+  end,
+})
+
 -- vim: ts=2 sts=2 sw=2 et

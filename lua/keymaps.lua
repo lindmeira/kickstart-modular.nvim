@@ -88,6 +88,7 @@ vim.keymap.set('i', '<C-e>', '<C-o>u<C-o>==', { silent = true, remap = true })
 
 -- Call NeoGit
 vim.keymap.set('n', '<C-g>', '<Cmd>Neogit<CR>', { silent = true })
+vim.keymap.set('n', '<leader>gn', ':Neogit<CR>', { silent = true, remap = true })
 
 -- Remap Q/W to q/w, respectively
 vim.cmd 'command! Q q'
