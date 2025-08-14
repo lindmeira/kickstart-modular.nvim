@@ -7,12 +7,17 @@ return {
     opts = {
       ensure_installed = {
         'c',
+        'css',
         'lua',
         'php',
         'vim',
         'bash',
         'diff',
         'html',
+        'json',
+        'make',
+        'toml',
+        'yaml',
         'query',
         'regex',
         'luadoc',
