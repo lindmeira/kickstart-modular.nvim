@@ -36,6 +36,7 @@ return {
         -- You can use 'stop_after_first' to run the first available formatter from the list
         javascript = { 'prettierd', 'prettier', stop_after_first = true },
         markdown = { 'markdownlint' },
+        make = { 'mbake' },
         php = { 'pretty-php' },
         lua = { 'stylua' },
         sh = { 'shfmt' },
@@ -52,6 +53,11 @@ return {
         --     '--style=kr',
         --   },
         -- },
+        mbake = {
+          command = 'mbake',
+          args = { 'format', '--stdin' },
+          stdin = true,
+        },
       },
     },
   },

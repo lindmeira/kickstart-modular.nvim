@@ -90,6 +90,10 @@ vim.keymap.set('i', '<C-e>', '<C-o>u<C-o>==', { silent = true, remap = true })
 vim.keymap.set('n', '<C-g>', '<Cmd>Neogit<CR>', { silent = true })
 vim.keymap.set('n', '<leader>gn', ':Neogit<CR>', { silent = true, remap = true })
 
+vim.keymap.set('n', '<leader>l', function()
+  require('lint').try_lint()
+end, { desc = 'Lint current file' })
+
 -- Remap Q/W to q/w, respectively
 vim.cmd 'command! Q q'
 vim.cmd 'command! W w'
