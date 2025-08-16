@@ -72,9 +72,9 @@ vim.opt.foldlevel = 99
 
 vim.opt.guicursor = 'i:ver25-blinkwait100-blinkon50-blinkoff50'
 vim.opt.expandtab = true
-vim.opt.softtabstop = 2
-vim.opt.shiftwidth = 2
-vim.opt.tabstop = 2
+vim.opt.softtabstop = 3
+vim.opt.shiftwidth = 3
+vim.opt.tabstop = 3
 
 -- Set the colorscheme
 -- vim.cmd.colorscheme 'vim'
