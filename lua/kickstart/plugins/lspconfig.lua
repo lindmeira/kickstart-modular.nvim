@@ -283,6 +283,7 @@ return {
       vim.list_extend(ensure_installed, {
         'shfmt',
         'stylua', -- Used to format Lua code
+        'mdformat',
         'checkmake',
         'prettierd',
         'pretty-php',
