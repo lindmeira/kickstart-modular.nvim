@@ -32,18 +32,16 @@ return {
       formatters_by_ft = {
         -- Conform can also run multiple formatters sequentially
         -- python = { "isort", "black" },
-        --
-        -- You can use 'stop_after_first' to run the first available formatter from the list
-        javascript = { 'prettierd', 'prettier', stop_after_first = true },
-        markdown = { 'markdownlint' },
         make = { 'mbake' },
+        markdown = { 'mdformat', 'markdownlint', stop_after_first = true },
+        javascript = { 'prettierd' },
         php = { 'pretty-php' },
         lua = { 'stylua' },
         sh = { 'shfmt' },
       },
       formatters = {
         shfmt = {
-          args = { '--indent', '2' },
+          args = { '--indent', '4' },
         },
         -- astyle = {
         --   args = {
