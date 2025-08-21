@@ -8,7 +8,7 @@ return {
       lint.linters_by_ft = {
         markdown = { 'markdownlint' },
         make = { 'checkmake' },
-        sh = { 'shellcheck' },
+        -- sh = { 'shellcheck' }, -- Not needed when Bash LSP is on
       }
 
       -- To allow other plugins to add linters to require('lint').linters_by_ft,
