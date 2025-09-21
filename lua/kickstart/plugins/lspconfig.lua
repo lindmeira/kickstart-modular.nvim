@@ -26,7 +26,7 @@ return {
       -- Useful status updates for LSP.
       {
         'j-hui/fidget.nvim',
-        tag = 'v1.6.0', -- Fix to a specific version
+        -- tag = 'v1.6.0', -- Fix to a specific version
         opts = {
           notification = {
             window = {
