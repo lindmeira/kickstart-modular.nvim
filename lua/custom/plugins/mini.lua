@@ -15,7 +15,7 @@ return {
       -- - saiw) - [S]urround [A]dd [I]nne  [W]ord [)]Paren
       -- - sd'   - [S]urround [D]elete [']quotes
       -- - sr)'  - [S]urround [R]eplace [)] [']
-      require('mini.surround').setup()
+      -- require('mini.surround').setup()
 
       -- My personal additions (Meira, L.)
       require('mini.diff').setup {
