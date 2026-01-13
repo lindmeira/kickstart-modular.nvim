@@ -286,8 +286,8 @@ return {
         'shfmt',
         'stylua', -- Used to format Lua code
         'mdformat',
+        'prettier',
         'checkmake',
-        'prettierd',
         'pretty-php',
         'shellcheck',
         'markdownlint',

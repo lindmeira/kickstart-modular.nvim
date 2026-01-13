@@ -34,7 +34,7 @@ return {
         -- python = { "isort", "black" },
         make = { 'mbake' },
         markdown = { 'mdformat', 'markdownlint', stop_after_first = true },
-        javascript = { 'prettierd' },
+        javascript = { 'prettierd', 'prettier', stop_after_first = true },
         php = { 'pretty-php' },
         lua = { 'stylua' },
         sh = { 'shfmt' },
@@ -55,6 +55,13 @@ return {
           command = 'mbake',
           args = { 'format', '--stdin' },
           stdin = true,
+        },
+        prettier = {
+          prepend_args = {
+            -- '--tab-width=4',
+            '--single-quote',
+            '--config-precedence=prefer-file',
+          },
         },
       },
     },
