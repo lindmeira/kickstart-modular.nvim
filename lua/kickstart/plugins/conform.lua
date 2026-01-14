@@ -35,6 +35,7 @@ return {
         make = { 'mbake' },
         markdown = { 'mdformat', 'markdownlint', stop_after_first = true },
         javascript = { 'prettierd', 'prettier', stop_after_first = true },
+        css = { 'prettierd', 'prettier', stop_after_first = true },
         php = { 'pretty-php' },
         lua = { 'stylua' },
         sh = { 'shfmt' },
