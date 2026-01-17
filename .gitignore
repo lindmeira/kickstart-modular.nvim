@@ -3,5 +3,6 @@ tags
 test.sh
 .luarc.json
 lazy-lock.json
+lua/arduino.nvim
 spell/
 **/*~
