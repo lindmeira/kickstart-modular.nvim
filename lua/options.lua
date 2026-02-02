@@ -130,4 +130,13 @@ vim.api.nvim_create_autocmd({ 'BufNewFile', 'BufRead' }, {
   end,
 })
 
+-- Clangd defaults to 2 spaces, so...
+vim.api.nvim_create_autocmd('FileType', {
+  pattern = { 'c', 'h', 'cpp' },
+  callback = function()
+    vim.opt_local.softtabstop = 2
+    vim.opt_local.shiftwidth = 2
+    vim.opt_local.tabstop = 2
+  end,
+})
 -- vim: ts=2 sts=2 sw=2 et
