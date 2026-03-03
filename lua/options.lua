@@ -139,4 +139,17 @@ vim.api.nvim_create_autocmd('FileType', {
     vim.opt_local.tabstop = 2
   end,
 })
+
+-- Toggle between no numbers and your preferred numbering (relative + absolute current line)
+vim.keymap.set({ 'n', 'i', 'v' }, '<F2>', function()
+  if vim.o.number or vim.o.relativenumber then
+    -- Turn off both
+    vim.o.number = false
+    vim.o.relativenumber = false
+  else
+    -- Turn on both (restores your preferred setup)
+    vim.o.number = true
+    vim.o.relativenumber = true
+  end
+end, { desc = 'Toggle line numbers' })
 -- vim: ts=2 sts=2 sw=2 et
